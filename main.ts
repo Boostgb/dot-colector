@@ -14,8 +14,9 @@ let apple = game.createSprite(randint(0, 4), randint(0, 4))
 apple.set(LedSpriteProperty.Brightness, 7)
 let Enemy = game.createSprite(randint(0, 4), randint(0, 4))
 Enemy.set(LedSpriteProperty.Brightness, 75)
-loops.everyInterval(500, function () {
-    Player.move(1)
+let speed = 500
+loops.everyInterval(60000, function () {
+    speed += -100
 })
 loops.everyInterval(randint(4000, 7000), function () {
     Enemy.delete()
@@ -40,4 +41,7 @@ basic.forever(function () {
         game.setScore(points)
         game.gameOver()
     }
+})
+loops.everyInterval(speed, function () {
+    Player.move(1)
 })
